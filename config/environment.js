@@ -19,6 +19,20 @@ module.exports = function(environment) {
     }
   };
 
+  ENV.apiBaseUrl = 'http://gitrdun.countryfriedcoders.me';
+
+  ENV['ember-simple-auth'] = {
+      authorizer: 'authorizer:token'
+  };
+  ENV['ember-simple-auth-token'] = {
+      refreshAccessTokens: true,
+      timeFactor: 1000,
+      refreshLeeway: 300,
+      serverTokenEndpoint: ENV.apiBaseUrl + '/api/auth/login',
+      serverTokenRefreshEndpoint: ENV.apiBaseUrl + '/api/auth/token-refresh',
+      identificationField: 'email'
+  };
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
